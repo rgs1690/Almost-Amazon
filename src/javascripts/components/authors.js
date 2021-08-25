@@ -3,13 +3,13 @@
 const showAuthors = (array) => {
   document.querySelector('#store').innerHTML = '';
   // CREATE A BUTTON TO ADD BOOKS
-  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add A Book</button>';
+  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add Author</button>';
+  document.querySelector('#form-container').innerHTML = '';
   array.forEach((item) => {
     // FIXME: STUDENTS create cards for your authors
     document.querySelector('#store').innerHTML += `
-    <div class="card">
-    <img class="card-img-top" src=${item.image} alt=${item.title} style="height: 400px;">
-    <div class="card-body" style="height: 180px;">
+    <div class="card" style='width: 18rem;'>
+    <div class="card-body">
     <h5 class="card-title">${item.first_name}${item.last_name}</h5>
     <p class="auth-Contact">Author Contact:${item.email}</p>
     <hr>
