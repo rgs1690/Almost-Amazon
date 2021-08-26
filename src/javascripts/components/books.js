@@ -3,7 +3,6 @@ const showBooks = (array) => {
 
   document.querySelector('#store').innerHTML = '';
   document.querySelector('#form-container').innerHTML = '';
-
   array.forEach((item) => {
     document.querySelector('#store').innerHTML += `
   <div class="card">

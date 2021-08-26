@@ -7,10 +7,12 @@ import domEvents from '../events/domEvents';
 import navigationEvents from '../events/navigationEvents';
 import { getAuthors } from '../helpers/data/authorData';
 import { getBooks } from '../helpers/data/bookData';
+import formEvents from '../events/formEvents';
 
 const startApp = () => {
   domBuilder(); // BUILD THE DOM
   domEvents(); // ADD THE EVENT LISTENTERS TO THE DOM
+  formEvents();
   navBar(); // DYNAMICALLY ADD THE NAV
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navigationEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR

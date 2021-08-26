@@ -13,8 +13,8 @@ const getAuthors = () => new Promise((resolve, reject) => {
 const createAuthor = (authorObject) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/authors.json`, authorObject)
     .then((response) => {
-      const firebaseKey = response.data.name;
-      axios.patch(`${dbUrl}/authors/${response.data.name}.json`, { firebaseKey })
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/authors/${response.data.name}.json`, body)
         .then(() => {
           getAuthors().then((booksArray) => resolve(booksArray));
         });

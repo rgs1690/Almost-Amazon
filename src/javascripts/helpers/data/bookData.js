@@ -16,10 +16,10 @@ const getBooks = () => new Promise((resolve, reject) => {
 const createBook = (bookObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/books.json`, bookObj)
     .then((response) => {
-      const firebaseKey = response.data.name;
-      axios.patch(`${dbUrl}/books/${response.data.name}.json`, { firebaseKey })
+      const body = { firebaseKey: response.data.name };
+      axios.patch(`${dbUrl}/books/${response.data.name}.json`, body)
         .then(() => {
-          getBooks().then((allBooks) => resolve(allBooks));
+          getBooks().then(resolve);
         });
     }).catch((error) => reject(error));
 });
