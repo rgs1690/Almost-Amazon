@@ -22,5 +22,11 @@ const createAuthor = (authorObject) => new Promise((resolve, reject) => {
 });
 // UPDATE AUTHOR
 // SEARCH AUTHORS
+// FILTER FAVORITE AUTHORS
+const faveAuthors = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/authors.json?orderBy="favorite"&equalTo=true`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch(reject);
+});
 
-export { getAuthors, createAuthor };
+export { getAuthors, createAuthor, faveAuthors };
