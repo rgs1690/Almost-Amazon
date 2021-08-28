@@ -12,6 +12,15 @@ const getBooks = () => new Promise((resolve, reject) => {
 });
 
 // DELETE BOOK
+const deleteBook = (firebaseKey) => new Promise((resolve, reject) => {
+  console.warn('in delte book promise', firebaseKey);
+  axios.delete(`${dbUrl}/books/${firebaseKey}.json`)
+    .then(() => {
+      getBooks().then(resolve);
+    })
+    .catch(reject);
+});
+
 // CREATE BOOK
 const createBook = (bookObj) => new Promise((resolve, reject) => {
   axios.post(`${dbUrl}/books.json`, bookObj)
@@ -32,4 +41,10 @@ const booksOnSale = () => new Promise((resolve, reject) => {
     .then((response) => resolve(Object.values(response.data)))
     .catch(reject);
 });
-export { getBooks, createBook, booksOnSale };
+
+export {
+  getBooks,
+  createBook,
+  booksOnSale,
+  deleteBook
+};

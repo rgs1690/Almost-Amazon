@@ -1,12 +1,20 @@
 import addBookForm from '../components/forms/addBookForm';
 import addAuthorForm from '../components/forms/addAuthorForm';
+import { deleteBook } from '../helpers/data/bookData';
+import { showBooks } from '../components/books';
+import { deleteAuthor } from '../helpers/data/authorData';
+import { showAuthors } from '../components/authors';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
     // CLICK EVENT FOR DELETING A BOOK
     if (e.target.id.includes('delete-book')) {
-      if (window.customConfirm('Want to delete?')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
         console.warn('CLICKED DELETE BOOK', e.target.id);
+        const [, id] = e.target.id.split('--');
+        console.warn(id);
+        deleteBook(id).then(showBooks);
       }
     }
     // CLICK EVENT FOR SHOWING MODAL FORM FOR ADDING A BOOK
@@ -30,6 +38,15 @@ const domEvents = () => {
     }
 
     // ADD CLICK EVENT FOR DELETING AN AUTHOR
+    if (e.target.id.includes('delete-author')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
+        console.warn('CLICKED DELETE AUTHOR', e.target.id);
+        const [, id] = e.target.id.split('--');
+        console.warn(id);
+        deleteAuthor(id).then(showAuthors);
+      }
+    }
     // ADD CLICK EVENT FOR SHOWING FORM FOR ADDING AN AUTHOR
     if (e.target.id.includes('add-author-btn')) {
       addAuthorForm();
