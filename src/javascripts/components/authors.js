@@ -13,7 +13,7 @@ const showAuthors = (array) => {
     <h5 class="card-title">${item.first_name} ${item.last_name}</h5>
     <p class="auth-Contact">Author Contact: ${item.email}</p>
     <hr>
-    <button class="btn btn-info" data-toggle="modal" data-target="#formModal" id="edit-author-btn--${item.firebaseKey}">Edit Author</button>
+    <button class="btn btn-info"  id="edit-author-btn--${item.firebaseKey}">Edit Author</button>
     <button class="btn btn-danger" id="delete-author--${item.firebaseKey}">Delete Author</button>
     </div>
   </div>`;
