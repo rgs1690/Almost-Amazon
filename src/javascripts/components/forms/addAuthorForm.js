@@ -15,6 +15,10 @@ const addAuthorForm = (obj = {}) => {
     <label for="title">Email</label>
     <input type="email" class="form-control" id="email" aria-describedby="Enter Email" placeholder="Enter Email" value="${obj.email || ''}" required>
   </div>
+  <div class="form-check">
+  <input type="checkbox" class="form-check-input" id="favorite" ${obj.favorite ? 'checked' : ''}>
+  <label class="form-check-label" for="sale">Favorite</label>
+</div>
   <button type="submit" 
   id="${obj.firebaseKey ? `update-author--${obj.firebaseKey}` : 'submit-author'}" class="btn btn-primary">Submit Author</button>
 </form>

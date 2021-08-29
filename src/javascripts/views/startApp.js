@@ -17,8 +17,8 @@ const startApp = () => {
   logoutButton(); // ADD THE LOGOUT BUTTON COMPONENT
   navigationEvents(); // ATTACH THE EVENT LISTENERS TO THE NAVBAR
   // Put all books on the DOM
-  getBooks().then((books) => showBooks(books));
   getAuthors().then((authors) => showAuthors(authors));
+  getBooks().then((books) => showBooks(books));
 };
 
 export default startApp;
