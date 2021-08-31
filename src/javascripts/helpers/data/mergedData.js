@@ -17,7 +17,6 @@ const viewAuthorDetails = (authorFirebaseKey) => new Promise((resolve, reject) =
       getBooksbySingleAuthor(authorObj.firebaseKey)
         .then((bookObj) => {
           resolve({ bookObj, ...authorObj });
-          console.warn(getBooksbySingleAuthor);
           console.warn(bookObj);
         });
     }).catch(reject);
