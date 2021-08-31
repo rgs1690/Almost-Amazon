@@ -1,6 +1,7 @@
 import clearDom from '../helpers/clearDom';
+import addAuthorBooks from './forms/addAuthorBooks';
 
-const viewAuthor = (obj) => {
+const viewAuthor = (obj, bookObj) => {
   clearDom();
   document.querySelector('#view').innerHTML += `
     <div class="mt-5 d-flex flex-wrap">
@@ -16,16 +17,9 @@ const viewAuthor = (obj) => {
        <p>${obj.description || ''}</p>
        <p>${obj.favorite ? '<span class="badge bg-warning text-dark"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span>' : ''}</p>      
        <hr>
-       </div>
-        <div class="card">
-            <img class="card-img-top" src=${obj.bookObj.image} alt=${obj.bookObj.title} style="height: 400px;">
-            <div class="card-body" style="height: 180px;">
-            <h5 class="card-title">${obj.bookObj.title}</h5>
-            <p class="card-text bold">${obj.bookObj.sale ? `<span class="badge badge-info sale-badge"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span> $${obj.bookObj.price}` : `$${obj.bookObj.price}`}</p>
-            <hr>
-        </div>
-     </div>
-       `;
+       <div id="authorBooksView"></div>
+       </div>`;
+  addAuthorBooks(bookObj);
 };
 
 /* <img src=${obj.image} alt=${obj.title} style="width: 300px;"> */
