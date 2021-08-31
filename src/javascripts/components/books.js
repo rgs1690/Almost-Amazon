@@ -1,8 +1,8 @@
 import clearDom from '../helpers/clearDom';
 
 const showBooks = (array) => {
-  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add A Book</button>';
   clearDom();
+  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add A Book</button>';
   array.forEach((item) => {
     document.querySelector('#store').innerHTML += `
   <div class="card">
