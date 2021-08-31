@@ -82,3 +82,30 @@ body {
     }
   }
 }
+#view {
+  width: 90%;
+  margin: auto;
+
+  .details {
+    min-width: 50%;
+    max-width: 60%;
+  }
+
+  .description {
+    white-space: pre-wrap;
+  }
+}
+#authorBooksView{
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-flow: wrap;
+  .details {
+    min-width: 50%;
+    max-width: 60%;
+  }
+
+  .description {
+    white-space: pre-wrap;
+  }
+}

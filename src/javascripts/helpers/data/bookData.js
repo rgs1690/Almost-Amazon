@@ -16,7 +16,12 @@ const getSingleBook = (firebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(response.data))
     .catch(reject);
 });
-
+//  get books by single author
+const getBooksbySingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/books.json?orderBy="author_id"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
 // DELETE BOOK
 const deleteBook = (firebaseKey) => new Promise((resolve, reject) => {
   console.warn('in delte book promise', firebaseKey);
@@ -59,5 +64,6 @@ export {
   booksOnSale,
   deleteBook,
   getSingleBook,
-  updateBook
+  updateBook,
+  getBooksbySingleAuthor
 };
