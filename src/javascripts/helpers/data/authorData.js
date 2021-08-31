@@ -54,5 +54,5 @@ export {
   faveAuthors,
   deleteAuthor,
   updateAuthor,
-  getSingleAuthor
+  getSingleAuthor,
 };

@@ -1,8 +1,8 @@
+import clearDom from '../helpers/clearDom';
+
 const viewBook = (obj) => {
-  document.querySelector('#store').innerHTML = '';
-  document.querySelector('#add-button').innerHTML = '';
-  document.querySelector('#form-container').innerHTML = '';
-  document.querySelector('#view').innerHTML = '';
+  clearDom();
+  console.warn(obj);
   document.querySelector('#view').innerHTML += `
     <div class="mt-5 d-flex flex-wrap">
      <div class="d-flex flex-column">
@@ -13,7 +13,7 @@ const viewBook = (obj) => {
        </div>
      </div>
      <div class="text-white ms-5 details">
-       <h5>${obj.title} by ${obj.author_id}</h5>
+       <h5>${obj.title} by ${obj.authorObject.first_name} ${obj.authorObject.last_name} </h5>
        <p>${obj.description || ''}</p>
        <hr>
        <p>${obj.sale ? `<span class="badge bg-info sale-badge"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span> 
