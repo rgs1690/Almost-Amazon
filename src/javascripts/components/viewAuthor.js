@@ -11,6 +11,7 @@ const viewAuthor = (obj) => {
        </div>
      </div>
      <div class="card">
+       <img src=${obj.image} alt=${obj.title} style="width: 300px;">
        <h5>${obj.first_name}  ${obj.last_name}</h5>
        <p>${obj.email || ''}</p>
        <p>${obj.description || ''}</p>
@@ -32,5 +33,4 @@ const viewAuthor = (obj) => {
   });
 };
 
-/* <img src=${obj.image} alt=${obj.title} style="width: 300px;"> */
 export default viewAuthor;
