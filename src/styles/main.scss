@@ -42,6 +42,8 @@ body {
   align-content: center;
 
   #add-button {
+    display: flex;
+    flex-flow: row wrap;
     margin: 0 auto;
     text-align: center;
   }
@@ -108,4 +110,10 @@ body {
   .description {
     white-space: pre-wrap;
   }
+}
+#add-review-btn{
+  height: 50px;
+}
+.btn{
+  margin: 4px;
 }

@@ -2,7 +2,8 @@ import clearDom from '../helpers/clearDom';
 
 const showBooks = (array) => {
   clearDom();
-  document.querySelector('#add-button').innerHTML = '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add A Book</button>';
+  document.querySelector('#add-button').innerHTML += '<button class="btn btn-success btn-lg mb-4" id="add-book-btn">Add A Book</button>';
+  document.querySelector('#add-button').innerHTML += '<button type="button" class="btn btn-warning" id="add-review-btn">Add a Review</button>';
   array.forEach((item) => {
     document.querySelector('#store').innerHTML += `
   <div class="card">
@@ -15,10 +16,7 @@ const showBooks = (array) => {
     <i id="edit-book-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
     <i id="delete-book--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
     </div>
-    <div>
-      <button type="button" class="btn btn-warning" id="add-review-btn--${item.firebaseKey} ">Add a Review</button>
-    </div>
-    </div>`;
+  </div>`;
   });
 };
 
