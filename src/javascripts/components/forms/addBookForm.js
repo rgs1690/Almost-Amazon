@@ -11,7 +11,7 @@ const addBookForm = (obj = {}) => {
       </div>
       <div class="form-group">
         <label for="description">Description</label>
-        <textarea class="form-control" placeholder="Book Description" id="description" style="height: 100px"> value= "${obj.description || ''}"</textarea>
+        <textarea class="form-control" placeholder="Book Description" id="description" style="height: 100px" value= "${obj.description || ''}"></textarea>
       </div>
       <div class="form-group">
         <label for="image">Image URL</label>

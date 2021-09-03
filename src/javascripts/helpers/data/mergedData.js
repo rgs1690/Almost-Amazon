@@ -12,11 +12,11 @@ const viewBookDetails = (bookfirebaseKey) => new Promise((resolve, reject) => {
 });
 const viewAuthorDetails = (authorFirebaseKey) => new Promise((resolve, reject) => {
   getSingleAuthor(authorFirebaseKey)
-    .then((authorObj) => {
-      console.warn(authorObj);
-      getBooksbySingleAuthor(authorObj.firebaseKey)
+    .then((authorObject) => {
+      console.warn(authorObject);
+      getBooksbySingleAuthor(authorObject.firebaseKey)
         .then((bookObj) => {
-          resolve({ bookObj, ...authorObj });
+          resolve({ bookObj, ...authorObject });
           console.warn(bookObj);
         });
     }).catch(reject);
