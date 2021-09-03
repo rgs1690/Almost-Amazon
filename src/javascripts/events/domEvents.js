@@ -17,7 +17,12 @@ import {
   deleteAuthorBooks
 } from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
-import { createReview, deleteReview } from '../helpers/data/reviewData';
+import {
+  createReview,
+  deleteReview,
+  getSingleReview,
+  updateReview
+} from '../helpers/data/reviewData';
 import viewReview from '../components/viewReviews';
 import { showReviews } from '../components/reviews';
 
@@ -145,6 +150,24 @@ const domEvents = () => {
         console.warn(id);
         deleteReview(id).then(showReviews);
       }
+    }
+    // CLICK EVENT FOR  EDITING/ UPDATING A REVIEW
+    if (e.target.id.includes('edit-review-btn')) {
+      console.warn('CLICKED EDIT REVIEW', e.target.id);
+      const [, id] = e.target.id.split('--');
+      getSingleReview(id).then((reviewObj) => addReviewForm(reviewObj));
+    }
+    // CLICK EVENT FOR EDITING A REVIEW
+    if (e.target.id.includes('update-review')) {
+      e.preventDefault();
+      const [, firebaseKey] = e.target.id.split('--');
+      const reviewObject = {
+        reviewer_name: document.querySelector('#reviewerName').value,
+        author_id: document.querySelector('#book_id').value,
+        review_message: document.querySelector('#reviewMessage').value,
+        firebaseKey
+      };
+      updateReview(reviewObject).then(showReviews);
     }
   });
 };
