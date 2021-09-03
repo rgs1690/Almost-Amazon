@@ -20,5 +20,11 @@ const createReview = (reviewObj) => new Promise((resolve, reject) => {
         });
     }).catch((error) => reject(error));
 });
+// GET SINGLE REVIEW
+const getSingleReview = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/reviews/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
 
-export { getReviews, createReview };
+export { getReviews, createReview, getSingleReview };

@@ -10,8 +10,16 @@ import { updateAuthor, getSingleAuthor } from '../helpers/data/authorData';
 import { showAuthors } from '../components/authors';
 import viewBook from '../components/viewBook';
 import viewAuthor from '../components/viewAuthor';
-import { viewBookDetails, viewAuthorDetails, deleteAuthorBooks } from '../helpers/data/mergedData';
+import {
+  viewBookDetails,
+  viewAuthorDetails,
+  viewReviewDetails,
+  deleteAuthorBooks
+} from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
+import { createReview } from '../helpers/data/reviewData';
+import viewReview from '../components/viewReviews';
+import { showReviews } from '../components/reviews';
 
 const domEvents = () => {
   document.querySelector('#main-container').addEventListener('click', (e) => {
@@ -108,6 +116,25 @@ const domEvents = () => {
       console.warn('CLICKED ADD REVIEW BUTTON', e.target.id);
       const [, firebaseKey] = e.target.id.split('--');
       addReviewForm(firebaseKey);
+    }
+    // VIEW REVIEW
+    if (e.target.id.includes('view-review-btn')) {
+      console.warn('CLICKED REVIEW VIEW BOOK', e.target.id);
+      const [, firebaseKey] = e.target.id.split('--');
+      viewReviewDetails(firebaseKey).then(viewReview);
+    }
+    // SUBMIT REVIEW
+    if (e.target.id.includes('submit-review')) {
+      e.preventDefault();
+      console.warn('clicked submit review', e.target.id);
+      const [, firebaseKey] = e.target.id.split('--');
+      const reviewObject = {
+        reviewer_name: document.querySelector('#reviewerName').value,
+        review_message: document.querySelector('#reviewMessage').value,
+        firebaseKey,
+        book_id: document.querySelector('#book_id').value
+      };
+      createReview(reviewObject).then(showReviews);
     }
   });
 };
