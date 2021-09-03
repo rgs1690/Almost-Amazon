@@ -35,10 +35,16 @@ const deleteReview = (firebaseKey) => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
-
+// UPDATE Review
+const updateReview = (reviewObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/reviews/${reviewObj.firebaseKey}.json`, reviewObj)
+    .then(() => getReviews().then(resolve))
+    .catch(reject);
+});
 export {
   getReviews,
   createReview,
   getSingleReview,
-  deleteReview
+  deleteReview,
+  updateReview
 };

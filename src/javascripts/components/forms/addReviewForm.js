@@ -16,7 +16,7 @@ const addReviewForm = (obj = {}) => {
     <textarea class="form-control" id="reviewMessage" rows="3" value="${obj.reviewMessage || ''}" required></textarea>
   </div>
   <button type="submit" 
-  id="${obj.firebaseKey ? `update-author--${obj.firebaseKey}` : 'submit-review'}" class="btn btn-primary">Submit Review
+  id="${obj.firebaseKey ? `update-review--${obj.firebaseKey}` : 'submit-review'}" class="btn btn-primary">Submit Review
   </button>
   </form>
 `;
