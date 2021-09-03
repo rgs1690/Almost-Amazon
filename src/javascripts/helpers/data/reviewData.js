@@ -41,10 +41,18 @@ const updateReview = (reviewObj) => new Promise((resolve, reject) => {
     .then(() => getReviews().then(resolve))
     .catch(reject);
 });
+//  GET REVIEWS OF SINGLE BOOK
+const getReviewsofSingleBook = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/reviews.json?orderBy="book_id"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   getReviews,
   createReview,
   getSingleReview,
   deleteReview,
-  updateReview
+  updateReview,
+  getReviewsofSingleBook
 };
