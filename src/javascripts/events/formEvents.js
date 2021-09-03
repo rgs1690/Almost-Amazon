@@ -2,6 +2,7 @@ import { createBook } from '../helpers/data/bookData';
 import { showBooks } from '../components/books';
 import { createAuthor } from '../helpers/data/authorData';
 import { showAuthors } from '../components/authors';
+import { createReview } from '../helpers/data/reviewData';
 
 const formEvents = () => {
 // CLICK EVENT FOR SUBMITTING FORM FOR ADDING A BOOK
@@ -28,6 +29,17 @@ const formEvents = () => {
         favorite: document.querySelector('#favorite').checked
       };
       createAuthor(authorObj).then(showAuthors);
+    }
+    // CLICK FOR SUBMITTING REVIEW
+    if (e.target.id.includes('submit-review')) {
+      e.preventDefault();
+      console.warn('clicked submit');
+      const reviewObject = {
+        reviewerName: document.querySelector('#reviewerName').value,
+        reviewMessage: document.querySelector('#reviewMessage').value,
+        book_id: document.querySelector('#book_id')
+      };
+      createReview(reviewObject).then(showBooks);
     }
   });
 };

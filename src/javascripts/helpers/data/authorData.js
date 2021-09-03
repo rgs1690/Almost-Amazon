@@ -27,7 +27,7 @@ const createAuthor = (authorObject) => new Promise((resolve, reject) => {
         });
     }).catch((error) => reject(error));
 });
-// GET SINGLE BOOK
+// GET SINGLE AUTHOR
 const getSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/authors/${firebaseKey}.json`)
     .then((response) => resolve(response.data))

@@ -15,7 +15,10 @@ const showBooks = (array) => {
     <i id="edit-book-btn--${item.firebaseKey}" class="fas fa-edit btn btn-info"></i>
     <i id="delete-book--${item.firebaseKey}" class="btn btn-danger fas fa-trash-alt"></i>
     </div>
-</div>`;
+    <div>
+      <button type="button" class="btn btn-warning" id="add-review-btn--${item.firebaseKey} ">Add a Review</button>
+    </div>
+    </div>`;
   });
 };
 
