@@ -1,7 +1,7 @@
 import addBookForm from '../components/forms/addBookForm';
 import addAuthorForm from '../components/forms/addAuthorForm';
 import {
-  deleteBook,
+  // deleteBook,
   getSingleBook,
   updateBook,
 } from '../helpers/data/bookData';
@@ -14,14 +14,15 @@ import {
   viewBookDetails,
   viewAuthorDetails,
   viewReviewDetails,
-  deleteAuthorBooks
+  deleteAuthorBooks,
+  deleteBookReviews
 } from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
 import {
   createReview,
   deleteReview,
   getSingleReview,
-  updateReview
+  updateReview,
 } from '../helpers/data/reviewData';
 import viewReview from '../components/viewReviews';
 import { showReviews } from '../components/reviews';
@@ -35,7 +36,7 @@ const domEvents = () => {
         // console.warn('CLICKED DELETE BOOK', e.target.id);
         const [, id] = e.target.id.split('--');
         // console.warn(id);
-        deleteBook(id).then(showBooks);
+        deleteBookReviews(id).then(showBooks);
       }
     }
     // CLICK EVENT FOR SHOWING FORM FOR ADDING A BOOK
