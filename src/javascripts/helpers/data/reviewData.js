@@ -26,5 +26,19 @@ const getSingleReview = (firebaseKey) => new Promise((resolve, reject) => {
     .then((response) => resolve(response.data))
     .catch(reject);
 });
+// DELETE REVIEW
+const deleteReview = (firebaseKey) => new Promise((resolve, reject) => {
+  console.warn('in delete review promise', firebaseKey);
+  axios.delete(`${dbUrl}/reviews/${firebaseKey}.json`)
+    .then(() => {
+      getReviews().then(resolve);
+    })
+    .catch(reject);
+});
 
-export { getReviews, createReview, getSingleReview };
+export {
+  getReviews,
+  createReview,
+  getSingleReview,
+  deleteReview
+};

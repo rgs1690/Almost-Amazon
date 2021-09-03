@@ -17,7 +17,7 @@ import {
   deleteAuthorBooks
 } from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
-import { createReview } from '../helpers/data/reviewData';
+import { createReview, deleteReview } from '../helpers/data/reviewData';
 import viewReview from '../components/viewReviews';
 import { showReviews } from '../components/reviews';
 
@@ -135,6 +135,16 @@ const domEvents = () => {
         book_id: document.querySelector('#book_id').value
       };
       createReview(reviewObject).then(showReviews);
+    }
+    // DELETE REVIEW
+    if (e.target.id.includes('delete-review')) {
+      // eslint-disable-next-line no-alert
+      if (window.confirm('Want to delete?')) {
+        console.warn('CLICKED DELETE REVIEW', e.target.id);
+        const [, id] = e.target.id.split('--');
+        console.warn(id);
+        deleteReview(id).then(showReviews);
+      }
     }
   });
 };
