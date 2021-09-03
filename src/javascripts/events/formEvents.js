@@ -5,7 +5,7 @@ import { showAuthors } from '../components/authors';
 
 const formEvents = () => {
 // CLICK EVENT FOR SUBMITTING FORM FOR ADDING A BOOK
-  document.querySelector('#main-container').addEventListener('submit', (e) => {
+  document.querySelector('#form-container').addEventListener('submit', (e) => {
     if (e.target.id.includes('submit-book')) {
       e.preventDefault();
       const bookObject = {
@@ -13,7 +13,7 @@ const formEvents = () => {
         image: document.querySelector('#image').value,
         price: document.querySelector('#price').value,
         sale: document.querySelector('#sale').checked,
-        author_id: document.querySelector('#author_id')
+        author_id: document.querySelector('#author_id').value
       };
 
       createBook(bookObject).then((booksArray) => showBooks(booksArray));

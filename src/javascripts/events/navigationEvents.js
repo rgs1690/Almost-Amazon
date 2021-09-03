@@ -3,6 +3,8 @@ import { showAuthors } from '../components/authors';
 import { showBooks } from '../components/books';
 import { booksOnSale, getBooks } from '../helpers/data/bookData';
 import { faveAuthors, getAuthors } from '../helpers/data/authorData';
+import { getReviews } from '../helpers/data/reviewData';
+import { showReviews } from '../components/reviews';
 
 // navigation events
 const navigationEvents = () => {
@@ -22,6 +24,10 @@ const navigationEvents = () => {
   // ALL BOOKS
   document.querySelector('#all-books').addEventListener('click', () => {
     getBooks().then(showBooks);
+  });
+  // REVIEWS
+  document.querySelector('#review-books').addEventListener('click', () => {
+    getReviews().then(showReviews);
   });
   // SEARCH
   document.querySelector('#search').addEventListener('keyup', (e) => {

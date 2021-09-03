@@ -19,7 +19,7 @@ const viewBook = (obj) => {
        <p>${obj.sale ? `<span class="badge bg-info sale-badge"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span> 
          $${obj.price}` : `$${obj.price}`}</p>      
         </div>
+        <div id="addReview"></div>
       </div>`;
 };
-
 export default viewBook;

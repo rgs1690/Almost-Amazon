@@ -15,7 +15,7 @@ const viewAuthor = (obj) => {
        <h5>${obj.first_name}  ${obj.last_name}</h5>
        <p>${obj.email || ''}</p>
        <p>${obj.description || ''}</p>
-       <p>${obj.favorite ? '<span class="badge bg-warning text-dark"><i class="fa fa-bell" aria-hidden="true"></i> Sale</span>' : ''}</p>      
+       <p>${obj.favorite ? '<span class="badge bg-warning text-dark"><i class="fa fa-bell" aria-hidden="true"></i> Favorite</span>' : ''}</p>      
        <hr>
        <div id="authorBooksView">
        </div>`;
