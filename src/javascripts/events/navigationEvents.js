@@ -15,11 +15,11 @@ const navigationEvents = (uid) => {
   // BOOKS ON SALE
   document.querySelector('#sale-books').addEventListener('click', () => {
     console.warn('Sale Books');
-    booksOnSale().then(showBooks);
+    booksOnSale(uid).then(showBooks);
   });
   // FAVE AUTHORS
   document.querySelector('#fave-authors').addEventListener('click', () => {
-    faveAuthors().then(showAuthors);
+    faveAuthors(uid).then(showAuthors);
   });
   // ALL BOOKS
   document.querySelector('#all-books').addEventListener('click', () => {

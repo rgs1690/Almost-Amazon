@@ -42,10 +42,12 @@ const updateAuthor = (authorObj) => new Promise((resolve, reject) => {
 });
 // SEARCH AUTHORS
 // FILTER FAVORITE AUTHORS
-const faveAuthors = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/authors.json?orderBy="favorite"&equalTo=true`)
-    .then((response) => resolve(Object.values(response.data)))
-    .catch(reject);
+const faveAuthors = (uid) => new Promise((resolve, reject) => {
+  getAuthors(uid)
+    .then((userAuthors) => {
+      const favoriteAuthors = userAuthors.filter((author) => author.favorite);
+      resolve(favoriteAuthors);
+    }).catch(reject);
 });
 
 export {
