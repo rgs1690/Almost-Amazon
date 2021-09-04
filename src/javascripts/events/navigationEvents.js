@@ -7,7 +7,7 @@ import { getReviews } from '../helpers/data/reviewData';
 import { showReviews } from '../components/reviews';
 
 // navigation events
-const navigationEvents = () => {
+const navigationEvents = (uid) => {
   // LOGOUT BUTTON
   document.querySelector('#logout-button')
     .addEventListener('click', signOut);
@@ -15,15 +15,15 @@ const navigationEvents = () => {
   // BOOKS ON SALE
   document.querySelector('#sale-books').addEventListener('click', () => {
     console.warn('Sale Books');
-    booksOnSale().then(showBooks);
+    booksOnSale(uid).then(showBooks);
   });
   // FAVE AUTHORS
   document.querySelector('#fave-authors').addEventListener('click', () => {
-    faveAuthors().then(showAuthors);
+    faveAuthors(uid).then(showAuthors);
   });
   // ALL BOOKS
   document.querySelector('#all-books').addEventListener('click', () => {
-    getBooks().then(showBooks);
+    getBooks(uid).then(showBooks);
   });
   // REVIEWS
   document.querySelector('#review-books').addEventListener('click', () => {
@@ -49,7 +49,7 @@ const navigationEvents = () => {
   // 2. Convert the response to an array because that is what the makeAuthors function is expecting
   // 3. If the array is empty because there are no authors, make sure to use the emptyAuthor function
   document.querySelector('#authors').addEventListener('click', () => {
-    getAuthors().then(showAuthors);
+    getAuthors(uid).then(showAuthors);
   });
 };
 

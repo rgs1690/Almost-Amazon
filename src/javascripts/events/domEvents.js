@@ -19,6 +19,7 @@ import {
 } from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
 import {
+  createReview,
   deleteReview,
   getSingleReview,
   updateReview,
@@ -155,6 +156,18 @@ const domEvents = () => {
         firebaseKey
       };
       updateReview(reviewObject).then(showReviews);
+    }
+    if (e.target.id.includes('submit-review')) {
+      e.preventDefault();
+      console.warn('clicked submit review', e.target.id);
+      const [, firebaseKey] = e.target.id.split('--');
+      const reviewObject = {
+        reviewer_name: document.querySelector('#reviewerName').value,
+        review_message: document.querySelector('#reviewMessage').value,
+        firebaseKey,
+        book_id: document.querySelector('#book_id').value
+      };
+      createReview(reviewObject).then(showReviews);
     }
   });
 };
