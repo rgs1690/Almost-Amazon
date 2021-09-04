@@ -6,7 +6,8 @@
     "last_name": "Avann",
     "email": "ravann1j@smugmug.com",
     "description": "This is a description of the author",
-    "favorite": false
+    "favorite": false,
+    "uid": "LZipojXMFjWWG0vqd0RwbMis0ul1"
   },
   "-MTpcli9kmjpvbdr-ckb": {
     "firebaseKey": "-MTpcli9kmjpvbdr-ckb",
@@ -15,7 +16,8 @@
     "last_name": "Dunrige",
     "email": "bdunrige1k@symantec.com",
     "description": "This is a description of the author",
-    "favorite": true
+    "favorite": true,
+    "uid": "LZipojXMFjWWG0vqd0RwbMis0ul1"
   },
   "-MTpcliA_-GtWZHpb8sf": {
     "firebaseKey": "-MTpcliA_-GtWZHpb8sf",
@@ -24,7 +26,8 @@
     "last_name": "Raddish",
     "email": "araddish1l@liveinternet.ru",
     "description": "This is a description of the author",
-    "favorite": false
+    "favorite": false,
+    "uid": "LZipojXMFjWWG0vqd0RwbMis0ul1"
   },
   "-MTpcliCeUeUNMpZ-Kog": {
     "firebaseKey": "-MTpcliCeUeUNMpZ-Kog",
@@ -33,7 +36,8 @@
     "last_name": "Dyke",
     "email": "ddyke1m@imageshack.us",
     "description": "This is a description of the author",
-    "favorite": true
+    "favorite": true,
+    "uid": "LZipojXMFjWWG0vqd0RwbMis0ul1"
   },
   "-MTpcliDmrp15A1WIE4U": {
     "firebaseKey": "-MTpcliDmrp15A1WIE4U",
@@ -42,7 +46,8 @@
     "last_name": "Clamo",
     "email": "lclamo1n@imgur.com",
     "description": "This is a description of the author",
-    "favorite": false
+    "favorite": false,
+    "uid": "123"
   },
   "-MTpcliGnhDSsyvILIoJ": {
     "firebaseKey": "-MTpcliGnhDSsyvILIoJ",
@@ -51,6 +56,7 @@
     "last_name": "Schlagman",
     "email": "mschlagman1o@miitbeian.gov.cn",
     "description": "This is a description of the author",
-    "favorite": true
+    "favorite": true,
+    "uid": "123"
   }
 }
