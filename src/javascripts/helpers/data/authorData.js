@@ -9,10 +9,11 @@ const getAuthors = (userId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // DELETE AUTHOR
-const deleteAuthor = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteAuthor = (firebaseKey, uid) => new Promise((resolve, reject) => {
+  console.warn('in delte author promise', firebaseKey);
   axios.delete(`${dbUrl}/authors/${firebaseKey}.json`)
     .then(() => {
-      getAuthors().then(resolve);
+      getAuthors(uid).then(resolve);
     })
     .catch(reject);
 });
@@ -23,7 +24,7 @@ const createAuthor = (authorObject) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/authors/${response.data.name}.json`, body)
         .then(() => {
-          getAuthors().then((booksArray) => resolve(booksArray));
+          getAuthors(authorObject.uid).then((booksArray) => resolve(booksArray));
         });
     }).catch((error) => reject(error));
 });
@@ -37,7 +38,7 @@ const getSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
 // UPDATE AUTHOR
 const updateAuthor = (authorObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/authors/${authorObj.firebaseKey}.json`, authorObj)
-    .then(() => getAuthors().then(resolve))
+    .then(() => getAuthors(authorObj.uid).then(resolve))
     .catch(reject);
 });
 // SEARCH AUTHORS
