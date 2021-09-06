@@ -34,11 +34,11 @@ const viewReviewDetails = (reviewfirebaseKey) => new Promise((resolve, reject) =
     }).catch(reject);
 });
 
-const deleteAuthorBooks = (authorId) => new Promise((resolve, reject) => {
+const deleteAuthorBooks = (uid, authorId) => new Promise((resolve, reject) => {
   getBooksbySingleAuthor(authorId).then((authorsBookArray) => {
-    const deleteBooks = authorsBookArray.map((book) => deleteBook(book.firebaseKey));
+    const deleteBooks = authorsBookArray.map(((book) => deleteBook(uid, book.firebaseKey)));
 
-    Promise.all([...deleteBooks]).then(() => resolve(deleteAuthor(authorId)));
+    Promise.all([...deleteBooks]).then(() => resolve(deleteAuthor(uid, authorId)));
   }).catch(reject);
 });
 

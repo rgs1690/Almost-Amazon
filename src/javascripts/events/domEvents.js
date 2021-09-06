@@ -84,7 +84,7 @@ const domEvents = (uid) => {
         // console.warn('CLICKED DELETE AUTHOR', e.target.id);
         const [, id] = e.target.id.split('--');
         // console.warn(id);
-        deleteAuthorBooks(id, uid).then(showAuthors);
+        deleteAuthorBooks(uid, id).then(showAuthors);
       }
     }
     // ADD CLICK EVENT FOR SHOWING FORM FOR ADDING AN AUTHOR
