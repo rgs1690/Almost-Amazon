@@ -5,7 +5,7 @@ import { showAuthors } from '../components/authors';
 // import { createReview } from '../helpers/data/reviewData';
 // import { showReviews } from '../components/reviews';
 
-const formEvents = () => {
+const formEvents = (uid) => {
 // CLICK EVENT FOR SUBMITTING FORM FOR ADDING A BOOK
   document.querySelector('#form-container').addEventListener('submit', (e) => {
     if (e.target.id.includes('submit-book')) {
@@ -15,7 +15,8 @@ const formEvents = () => {
         image: document.querySelector('#image').value,
         price: document.querySelector('#price').value,
         sale: document.querySelector('#sale').checked,
-        author_id: document.querySelector('#author_id').value
+        author_id: document.querySelector('#author_id').value,
+        uid
       };
 
       createBook(bookObject).then((booksArray) => showBooks(booksArray));
@@ -27,7 +28,8 @@ const formEvents = () => {
         email: document.querySelector('#email').value,
         first_name: document.querySelector('#first_name').value,
         last_name: document.querySelector('#last_name').value,
-        favorite: document.querySelector('#favorite').checked
+        favorite: document.querySelector('#favorite').checked,
+        uid
       };
       createAuthor(authorObj).then(showAuthors);
     }
