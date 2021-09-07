@@ -81,10 +81,11 @@ const domEvents = (uid) => {
     if (e.target.id.includes('delete-author')) {
       // eslint-disable-next-line no-alert
       if (window.confirm('Want to delete?')) {
-        // console.warn('CLICKED DELETE AUTHOR', e.target.id);
+        console.warn('CLICKED DELETE AUTHOR', e.target.id);
         const [, id] = e.target.id.split('--');
-        // console.warn(id);
+        console.warn(id);
         deleteAuthorBooks(uid, id).then(showAuthors);
+        console.warn(uid);
       }
     }
     // ADD CLICK EVENT FOR SHOWING FORM FOR ADDING AN AUTHOR

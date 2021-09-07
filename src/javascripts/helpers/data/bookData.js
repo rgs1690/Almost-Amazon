@@ -23,7 +23,7 @@ const getBooksbySingleAuthor = (firebaseKey) => new Promise((resolve, reject) =>
     .catch((error) => reject(error));
 });
 // DELETE BOOK
-const deleteBook = (firebaseKey, uid) => new Promise((resolve, reject) => {
+const deleteBook = (uid, firebaseKey) => new Promise((resolve, reject) => {
   console.warn('in delte book promise', firebaseKey);
   axios.delete(`${dbUrl}/books/${firebaseKey}.json`)
     .then(() => {
