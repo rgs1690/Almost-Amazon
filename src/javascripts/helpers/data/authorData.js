@@ -9,8 +9,8 @@ const getAuthors = (userId) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 // DELETE AUTHOR
-const deleteAuthor = (firebaseKey, uid) => new Promise((resolve, reject) => {
-  // console.warn('in delte  promise', firebaseKey);
+const deleteAuthor = (uid, firebaseKey) => new Promise((resolve, reject) => {
+  console.warn('in delte  promise', firebaseKey);
   axios.delete(`${dbUrl}/authors/${firebaseKey}.json`)
     .then(() => {
       getAuthors(uid).then(resolve);
