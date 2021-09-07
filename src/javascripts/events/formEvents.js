@@ -15,6 +15,7 @@ const formEvents = (uid) => {
         image: document.querySelector('#image').value,
         price: document.querySelector('#price').value,
         sale: document.querySelector('#sale').checked,
+        description: document.querySelector('#description').value,
         author_id: document.querySelector('#author_id').value,
         uid
       };
@@ -37,14 +38,15 @@ const formEvents = (uid) => {
     // if (e.target.id.includes('submit-review')) {
     //   e.preventDefault();
     //   console.warn('clicked submit review', e.target.id);
-    //   const [, firebaseKey] = e.target.id.split('--');
-    //   const reviewObject = {
+    //   // const [, firebaseKey] = e.target.id.split('--');
+    //   const reviewObj = {
     //     reviewer_name: document.querySelector('#reviewerName').value,
     //     review_message: document.querySelector('#reviewMessage').value,
-    //     firebaseKey,
-    //     book_id: document.querySelector('#book_id').value
+    //     // firebaseKey,
+    //     book_id: document.querySelector('#book_id').value,
+    //     uid
     //   };
-    //   createReview(reviewObject).then(showReviews);
+    //   createReview(reviewObj).then(showReviews);
     // }
   });
 };

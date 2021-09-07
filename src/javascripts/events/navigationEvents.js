@@ -27,7 +27,7 @@ const navigationEvents = (uid) => {
   });
   // REVIEWS
   document.querySelector('#review-books').addEventListener('click', () => {
-    getReviews().then(showReviews);
+    getReviews(uid).then(showReviews);
   });
   // SEARCH
   document.querySelector('#search').addEventListener('keyup', (e) => {

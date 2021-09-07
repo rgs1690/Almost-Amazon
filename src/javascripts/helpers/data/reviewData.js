@@ -4,8 +4,8 @@ import firebaseConfig from '../../../api/apiKeys';
 const dbUrl = firebaseConfig.databaseURL;
 
 // GET BOOK REVIEW
-const getReviews = () => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/reviews.json`)
+const getReviews = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/reviews.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => resolve(Object.values(response.data)))
     .catch((error) => reject(error));
 });
@@ -16,7 +16,7 @@ const createReview = (reviewObj) => new Promise((resolve, reject) => {
       const body = { firebaseKey: response.data.name };
       axios.patch(`${dbUrl}/reviews/${response.data.name}.json`, body)
         .then(() => {
-          getReviews().then(resolve);
+          getReviews(reviewObj.uid).then(resolve);
         });
     }).catch((error) => reject(error));
 });
@@ -27,18 +27,18 @@ const getSingleReview = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 // DELETE REVIEW
-const deleteReview = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteReview = (uid, firebaseKey) => new Promise((resolve, reject) => {
   console.warn('in delete review promise', firebaseKey);
   axios.delete(`${dbUrl}/reviews/${firebaseKey}.json`)
     .then(() => {
-      getReviews().then(resolve);
+      getReviews(uid).then(resolve);
     })
     .catch(reject);
 });
 // UPDATE Review
 const updateReview = (reviewObj) => new Promise((resolve, reject) => {
   axios.patch(`${dbUrl}/reviews/${reviewObj.firebaseKey}.json`, reviewObj)
-    .then(() => getReviews().then(resolve))
+    .then(() => getReviews(reviewObj.uid).then(resolve))
     .catch(reject);
 });
 //  GET REVIEWS OF SINGLE BOOK
