@@ -36,7 +36,7 @@ const domEvents = (uid) => {
         // console.warn('CLICKED DELETE BOOK', e.target.id);
         const [, id] = e.target.id.split('--');
         // console.warn(id);
-        deleteBook(id, uid).then(showBooks);
+        deleteBook(uid, id).then(showBooks);
       }
     }
     // CLICK EVENT FOR SHOWING FORM FOR ADDING A BOOK
@@ -123,8 +123,7 @@ const domEvents = (uid) => {
     // ADD EVENT FOR REVIEW BUTTON
     if (e.target.id.includes('add-review-btn')) {
       console.warn('CLICKED ADD REVIEW BUTTON', e.target.id);
-      const [, firebaseKey] = e.target.id.split('--');
-      addReviewForm(firebaseKey);
+      addReviewForm(uid);
     }
     // VIEW REVIEW
     if (e.target.id.includes('view-review-btn')) {
@@ -139,14 +138,14 @@ const domEvents = (uid) => {
         console.warn('CLICKED DELETE REVIEW', e.target.id);
         const [, id] = e.target.id.split('--');
         console.warn(id);
-        deleteReview(id).then(showReviews);
+        deleteReview(id, uid).then(showReviews);
       }
     }
     // CLICK EVENT FOR  EDITING/ UPDATING A REVIEW
     if (e.target.id.includes('edit-review-btn')) {
       console.warn('CLICKED EDIT REVIEW', e.target.id);
       const [, id] = e.target.id.split('--');
-      getSingleReview(id).then((reviewObj) => addReviewForm(reviewObj));
+      getSingleReview(id).then((reviewObj) => addReviewForm(uid, reviewObj));
     }
     // CLICK EVENT FOR EDITING A REVIEW
     if (e.target.id.includes('update-review')) {

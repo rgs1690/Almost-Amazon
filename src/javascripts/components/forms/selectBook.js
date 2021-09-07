@@ -1,11 +1,11 @@
 import { getBooks } from '../../helpers/data/bookData';
 
-const selectBook = (bookId) => {
+const selectBook = (uid, bookId) => {
   let domString = `<label for="author">Select a Book</label>
       <select class="form-control" id="book_id" required>
       <option value="">Select a Book</option>`;
 
-  getBooks().then((booksArray) => {
+  getBooks(uid).then((booksArray) => {
     booksArray.forEach((book) => {
       domString += `<option 
         value="${book.firebaseKey}" 
