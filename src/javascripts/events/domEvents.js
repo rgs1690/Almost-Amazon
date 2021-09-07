@@ -138,7 +138,7 @@ const domEvents = (uid) => {
         console.warn('CLICKED DELETE REVIEW', e.target.id);
         const [, id] = e.target.id.split('--');
         console.warn(id);
-        deleteReview(id, uid).then(showReviews);
+        deleteReview(uid, id).then(showReviews);
       }
     }
     // CLICK EVENT FOR  EDITING/ UPDATING A REVIEW
