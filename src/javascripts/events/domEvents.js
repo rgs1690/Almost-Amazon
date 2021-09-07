@@ -1,7 +1,7 @@
 import addBookForm from '../components/forms/addBookForm';
 import addAuthorForm from '../components/forms/addAuthorForm';
 import {
-  deleteBook,
+  // deleteBook,
   getSingleBook,
   updateBook,
 } from '../helpers/data/bookData';
@@ -15,7 +15,7 @@ import {
   viewAuthorDetails,
   viewReviewDetails,
   deleteAuthorBooks,
-  // deleteBookReviews
+  deleteBookReviews
 } from '../helpers/data/mergedData';
 import addReviewForm from '../components/forms/addReviewForm';
 import {
@@ -36,7 +36,7 @@ const domEvents = (uid) => {
         // console.warn('CLICKED DELETE BOOK', e.target.id);
         const [, id] = e.target.id.split('--');
         // console.warn(id);
-        deleteBook(id, uid).then(showBooks);
+        deleteBookReviews(uid, id).then(showBooks);
       }
     }
     // CLICK EVENT FOR SHOWING FORM FOR ADDING A BOOK
@@ -94,7 +94,7 @@ const domEvents = (uid) => {
     }
     // CLICK EVENT FOR  EDITING/ UPDATING AN AUTHOR
     if (e.target.id.includes('edit-author-btn')) {
-      console.warn('CLICKED EDIT BOOK', e.target.id);
+      console.warn('CLICKED EDIT author', e.target.id);
       const [, id] = e.target.id.split('--');
       getSingleAuthor(id).then((authorObj) => addAuthorForm(authorObj));
     }
@@ -123,8 +123,7 @@ const domEvents = (uid) => {
     // ADD EVENT FOR REVIEW BUTTON
     if (e.target.id.includes('add-review-btn')) {
       console.warn('CLICKED ADD REVIEW BUTTON', e.target.id);
-      const [, firebaseKey] = e.target.id.split('--');
-      addReviewForm(firebaseKey);
+      addReviewForm(uid);
     }
     // VIEW REVIEW
     if (e.target.id.includes('view-review-btn')) {
@@ -139,38 +138,40 @@ const domEvents = (uid) => {
         console.warn('CLICKED DELETE REVIEW', e.target.id);
         const [, id] = e.target.id.split('--');
         console.warn(id);
-        deleteReview(id).then(showReviews);
+        deleteReview(id, uid).then(showReviews);
       }
     }
     // CLICK EVENT FOR  EDITING/ UPDATING A REVIEW
     if (e.target.id.includes('edit-review-btn')) {
       console.warn('CLICKED EDIT REVIEW', e.target.id);
       const [, id] = e.target.id.split('--');
-      getSingleReview(id).then((reviewObj) => addReviewForm(reviewObj));
+      getSingleReview(id).then((reviewObj) => addReviewForm(uid, reviewObj));
     }
     // CLICK EVENT FOR EDITING A REVIEW
     if (e.target.id.includes('update-review')) {
       e.preventDefault();
       const [, firebaseKey] = e.target.id.split('--');
-      const reviewObject = {
+      const reviewObj = {
         reviewer_name: document.querySelector('#reviewerName').value,
         author_id: document.querySelector('#book_id').value,
         review_message: document.querySelector('#reviewMessage').value,
-        firebaseKey
+        firebaseKey,
+        uid
       };
-      updateReview(reviewObject).then(showReviews);
+      updateReview(reviewObj).then(showReviews);
     }
     if (e.target.id.includes('submit-review')) {
       e.preventDefault();
       console.warn('clicked submit review', e.target.id);
       const [, firebaseKey] = e.target.id.split('--');
-      const reviewObject = {
+      const reviewObj = {
         reviewer_name: document.querySelector('#reviewerName').value,
         review_message: document.querySelector('#reviewMessage').value,
         firebaseKey,
-        book_id: document.querySelector('#book_id').value
+        book_id: document.querySelector('#book_id').value,
+        uid
       };
-      createReview(reviewObject).then(showReviews);
+      createReview(reviewObj).then(showReviews);
     }
   });
 };

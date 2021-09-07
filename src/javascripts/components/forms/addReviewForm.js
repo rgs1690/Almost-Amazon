@@ -1,7 +1,8 @@
 import clearDom from '../../helpers/clearDom';
 import selectBook from './selectBook';
 
-const addReviewForm = (obj = {}) => {
+const addReviewForm = (uid, obj = {}) => {
+  console.warn(uid);
   clearDom();
 
   document.querySelector('#form-container').innerHTML += `
@@ -20,7 +21,7 @@ const addReviewForm = (obj = {}) => {
   </button>
   </form>
 `;
-  selectBook(`${obj.book_id || ''}`);
+  selectBook(uid, `${obj.book_id || ''}`);
 };
 
 export default addReviewForm;
